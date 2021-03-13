@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
         key = Integer.parseInt(in.nextLine());
 
         while (!rightInput) {
-            System.out.print("\n    Вы хотите зашифровать сообщение? Если ответ да, то введите YES, иначе же NO.\n");
+            System.out.print("\n    Вы хотите зашифровать сообщение? Если ответ да, то введите YES, иначе же NO: ");
             answer = "";
             while (answer.isEmpty()) {
                 answer = in.nextLine();
@@ -25,6 +26,37 @@ public class Main {
                 System.out.printf("\n    Зашифрованное сообщение: %s\n", RailFence.encryptRailFence(text, key));
             } else if (answer.equals("NO")) {
                 System.out.printf("\n    Расшифрованное сообщение: %s\n", RailFence.decryptRailFence(text, key));
+            }
+            else {
+                System.out.printf("\n    Вы неправильно ответили.\n");
+                rightInput = false;
+            }
+        }
+    }
+
+    private static void columnMethod() {
+        String text;
+        String key;
+        Scanner in = new Scanner(System.in);
+        String answer;
+        boolean rightInput = false;
+
+        System.out.print("    Введите сообщение: ");
+        text = in.nextLine();
+        System.out.print("    Введите ключ: ");
+        key = in.nextLine();
+
+        while (!rightInput) {
+            System.out.print("\n    Вы хотите зашифровать сообщение? Если ответ да, то введите YES, иначе же NO: ");
+            answer = "";
+            while (answer.isEmpty()) {
+                answer = in.nextLine();
+            }
+            rightInput = true;
+            if (answer.equals("YES")) {
+                System.out.printf("\n    Зашифрованное сообщение: %s\n", ColumnMethod.encryptColumn(text, key.toUpperCase()));
+            } else if (answer.equals("NO")) {
+                System.out.printf("\n    Расшифрованное сообщение: %s\n", ColumnMethod.decryptColumn(text, key.toUpperCase()));
             }
             else {
                 System.out.printf("\n    Вы неправильно ответили.\n");
@@ -60,6 +92,7 @@ public class Main {
                         railFence();
                         break;
                     case 2:
+                        columnMethod();
                         break;
                     case 3:
                         break;
