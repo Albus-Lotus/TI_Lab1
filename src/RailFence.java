@@ -43,12 +43,6 @@ public class RailFence {
     public static String decryptRailFence(String text, int key) {
         char[][] rail = new char[key][text.length()];
 
-        for (int i = 0; i < key; i++) {
-            for (int j = 0; j < text.length(); j++) {
-                rail[i][j] = '\n';
-            }
-        }
-
         boolean dirDown = false;
         int row = 0;
         int column = 0;
