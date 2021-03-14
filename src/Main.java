@@ -65,6 +65,40 @@ public class Main {
         }
     }
 
+    private static void vigenerCipher() {
+        String text;
+        String key;
+        Scanner in = new Scanner(System.in);
+        String answer;
+        boolean rightInput = false;
+
+        VigenerCipher.createMatrix();
+
+        System.out.print("    Введите сообщение: ");
+        text = in.nextLine();
+        text = text.replaceAll(" ", "");
+        System.out.print("    Введите ключ: ");
+        key = in.nextLine();
+
+        while (!rightInput) {
+            System.out.print("\n    Вы хотите зашифровать сообщение? Если ответ да, то введите YES, иначе же NO: ");
+            answer = "";
+            while (answer.isEmpty()) {
+                answer = in.nextLine();
+            }
+            rightInput = true;
+            if (answer.equals("YES")) {
+                System.out.printf("\n    Зашифрованное сообщение: %s\n", VigenerCipher.encryptVigenerCipher(text.toUpperCase(), key.toUpperCase()));
+            } else if (answer.equals("NO")) {
+                System.out.printf("\n    Расшифрованное сообщение: %s\n", VigenerCipher.decryptVigenerCipher(text.toUpperCase(), key.toUpperCase()));
+            }
+            else {
+                System.out.printf("\n    Вы неправильно ответили.\n");
+                rightInput = false;
+            }
+        }
+    }
+
     private static void menu() {
         boolean rightInput = false;
         Scanner in = new Scanner(System.in);
@@ -98,6 +132,7 @@ public class Main {
                         RotatingGrid.rotGtid();
                         break;
                     case 4:
+                        vigenerCipher();
                         break;
                     case 5:
                         repeat = false;
