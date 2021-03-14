@@ -95,6 +95,7 @@ public class Main {
                         columnMethod();
                         break;
                     case 3:
+                        RotatingGrid.rotGtid();
                         break;
                     case 4:
                         break;
